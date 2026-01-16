@@ -1,4 +1,4 @@
-fetch('./dashboards.json')
+./dashboards.json')
   .then(res => res.json())
   .then(data => {
     console.log('JSON carregado:', data);
