@@ -18,7 +18,7 @@ body {
       rgba(255,255,255,0.92),
       rgba(255,255,255,0.96)
     ),
-    url("./bg-header.jpg");
+    url("./bg-header.png");
   background-size: cover;
   background-position: center;
   border-bottom: 1px solid #e5e7eb;
