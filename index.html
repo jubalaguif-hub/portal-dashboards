@@ -14,19 +14,25 @@
 </header>
 
 <main>
- <main>
-  <div class="filters">
-    <button data-cat="Todas" class="active">Todas</button>
-  </div>
-
+  <div class="filters"></div>
   <div id="cards" class="grid"></div>
 </main>
-
 
 <footer>
   <p>© Portal de Dashboards</p>
 </footer>
 
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="fecharModal()">✕</button>
+    <iframe id="iframeDashboard"></iframe>
+  </div>
+</div>
+
+<!-- SCRIPT SEMPRE NO FINAL -->
 <script src="./app.js"></script>
+
 </body>
+
 </html>
