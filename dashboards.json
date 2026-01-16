@@ -1,0 +1,22 @@
+[
+  {
+    "titulo": "PCP",
+    "descricao": "Painel de acompanhamento PCP",
+    "url": "#"
+  },
+  {
+    "titulo": "NEDOCS",
+    "descricao": "Indicador de superlotação",
+    "url": "#"
+  },
+  {
+    "titulo": "Boarding",
+    "descricao": "Controle de pacientes em boarding",
+    "url": "#"
+  },
+  {
+    "titulo": "Controle PJ",
+    "descricao": "Gestão de profissionais PJ",
+    "url": "#"
+  }
+]
