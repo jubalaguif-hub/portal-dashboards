@@ -46,11 +46,12 @@ function renderizarCards(lista) {
     card.className = 'card';
 
     card.innerHTML = `
-      <h2>${item.titulo}</h2>
-      <p>${item.descricao}</p>
-      <span class="tag">${item.categoria}</span>
-      <a href="${item.url}" target="_blank">Acessar</a>
-    `;
+  <h2>${item.titulo}</h2>
+  <p>${item.descricao}</p>
+  <small>Painéis: ${item.paineis.join(', ')}</small>
+  <span class="tag">${item.categoria}</span>
+  <a href="#" onclick="abrirModal('${item.iframe}')">Acessar</a>
+`;
 
     container.appendChild(card);
   });
