@@ -2,21 +2,25 @@
   {
     "titulo": "PCP",
     "descricao": "Painel de acompanhamento PCP",
+    "categoria": "Assistencial",
     "url": "#"
   },
   {
     "titulo": "NEDOCS",
     "descricao": "Indicador de superlotação",
+    "categoria": "Assistencial",
     "url": "#"
   },
   {
-    "titulo": "BOARDING",
+    "titulo": "Boarding",
     "descricao": "Controle de pacientes em boarding",
+    "categoria": "Assistencial",
     "url": "#"
   },
   {
-    "titulo": "CONTROLE PJ",
+    "titulo": "Controle PJ",
     "descricao": "Gestão de profissionais PJ",
+    "categoria": "RH / PJ",
     "url": "#"
   }
 ]
