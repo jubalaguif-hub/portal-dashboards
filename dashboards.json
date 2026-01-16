@@ -1,26 +1,18 @@
 [
   {
-    "titulo": "PCP",
-    "descricao": "Painel de acompanhamento PCP",
+    "titulo": "Dashboard Assistencial",
+    "descricao": "BOARDING, NEDOCS, PCP e indicadores assistenciais",
     "categoria": "Assistencial",
-    "url": "#"
+    "paineis": ["BOARDING", "NEDOCS", "PCP"],
+    "embed": true,
+    "iframe": "https://LINK-EMBED-DO-DASHBOARD-ASSISTENCIAL"
   },
   {
-    "titulo": "NEDOCS",
-    "descricao": "Indicador de superlotação",
-    "categoria": "Assistencial",
-    "url": "#"
-  },
-  {
-    "titulo": "BOARDING",
-    "descricao": "Controle de pacientes em boarding",
-    "categoria": "Assistencial",
-    "url": "#"
-  },
-  {
-    "titulo": "CONTROLE PJ",
+    "titulo": "Controle PJ",
     "descricao": "Gestão de profissionais PJ",
     "categoria": "RH / PJ",
-    "url": "#"
+    "paineis": ["Controle PJ"],
+    "embed": true,
+    "iframe": "https://LINK-EMBED-DO-CONTROLE-PJ"
   }
 ]
