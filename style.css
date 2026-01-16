@@ -51,3 +51,30 @@ footer {
   font-size: 14px;
   color: #777;
 }
+.filters {
+  padding: 0 24px 16px;
+}
+
+.filters button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filters button.active {
+  background: #ff6a00;
+  color: #fff;
+  border-color: #ff6a00;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}
