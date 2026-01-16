@@ -5,15 +5,15 @@
   "paineis": [
     {
       "nome": "PCP",
-      "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+      "iframe": "LINK-EMBED-PAGINA-PCP"
     },
     {
       "nome": "NEDOCS",
-      "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+      "iframe": "LINK-EMBED-PAGINA-NEDOCS"
     },
     {
       "nome": "Boarding",
-      "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+      "iframe": "LINK-EMBED-PAGINA-BOARDING"
     }
   ]
 }
