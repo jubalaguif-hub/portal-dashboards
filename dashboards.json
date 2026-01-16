@@ -25,7 +25,7 @@
     "paineis": [
       {
         "nome": "Acessar",
-        "iframe": "https://example.com"
+        "iframe": "https://app.powerbi.com/reportEmbed?reportId=f8151561-0065-4b20-8bba-4d1a487144e5&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3"
       }
     ]
   }
