@@ -13,9 +13,17 @@ body {
 
 .header {
   background:
-    linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.92),
+      rgba(255,255,255,0.96)
+    ),
+    url("./bg-header.jpg");
+  background-size: cover;
+  background-position: center;
   border-bottom: 1px solid #e5e7eb;
 }
+
 
 
 header h1 {
