@@ -126,8 +126,9 @@ section h2 {
 
 .header {
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 3px solid #ff6a00;
 }
+
 
 .header-content {
   max-width: 1200px;
