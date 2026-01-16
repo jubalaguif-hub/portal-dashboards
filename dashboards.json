@@ -6,15 +6,15 @@
     "paineis": [
       {
         "nome": "PCP",
-        "iframe": "https://example.com"
+        "iframe": "https://app.powerbi.com/reportEmbed?reportId=2f941f4b-e923-48fd-8817-0788369fd8b8&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3"
       },
       {
         "nome": "NEDOCS",
-        "iframe": "https://example.com"
+        "iframe": "https://app.powerbi.com/reportEmbed?reportId=2f941f4b-e923-48fd-8817-0788369fd8b8&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3"
       },
       {
         "nome": "Boarding",
-        "iframe": "https://example.com"
+        "iframe": "https://app.powerbi.com/reportEmbed?reportId=2f941f4b-e923-48fd-8817-0788369fd8b8&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3"
       }
     ]
   },
