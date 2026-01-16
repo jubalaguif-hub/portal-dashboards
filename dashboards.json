@@ -6,15 +6,15 @@
     "paineis": [
       {
         "nome": "PCP",
-        "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+        "url": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
       },
       {
         "nome": "NEDOCS",
-        "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+        "url": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
       },
       {
         "nome": "Boarding",
-        "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+        "url": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "paineis": [
       {
         "nome": "Acessar",
-        "iframe": "https://app.powerbi.com/view?r=eyJrIjoiYWM1YzYxZmEtZWM4My00OGQ4LWIzY2UtZDRkMDAzYTIzNzM3IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
+        "url": "https://app.powerbi.com/view?r=eyJrIjoiYWM1YzYxZmEtZWM4My00OGQ4LWIzY2UtZDRkMDAzYTIzNzM3IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
       }
     ]
   }
