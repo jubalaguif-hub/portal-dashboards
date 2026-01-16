@@ -4,9 +4,18 @@
     "descricao": "PCP, NEDOCS e Boarding",
     "categoria": "Assistencial",
     "paineis": [
-      { "nome": "PCP", "iframe": "https://example.com" },
-      { "nome": "NEDOCS", "iframe": "https://example.com" },
-      { "nome": "Boarding", "iframe": "https://example.com" }
+      {
+        "nome": "PCP",
+        "iframe": "https://example.com"
+      },
+      {
+        "nome": "NEDOCS",
+        "iframe": "https://example.com"
+      },
+      {
+        "nome": "Boarding",
+        "iframe": "https://example.com"
+      }
     ]
   },
   {
@@ -14,7 +23,10 @@
     "descricao": "Gestão de profissionais PJ",
     "categoria": "RH / PJ",
     "paineis": [
-      { "nome": "Acessar", "iframe": "https://example.com" }
+      {
+        "nome": "Acessar",
+        "iframe": "https://example.com"
+      }
     ]
   }
 ]
