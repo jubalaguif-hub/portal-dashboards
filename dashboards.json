@@ -1,19 +1,18 @@
-{
-  "titulo": "Dashboard Assistencial",
-  "descricao": "Indicadores assistenciais",
-  "categoria": "Assistencial",
-  "paineis": [
-    {
-      "nome": "PCP",
-      "iframe": "LINK-EMBED-PAGINA-PCP"
-    },
-    {
-      "nome": "NEDOCS",
-      "iframe": "LINK-EMBED-PAGINA-NEDOCS"
-    },
-    {
-      "nome": "Boarding",
-      "iframe": "LINK-EMBED-PAGINA-BOARDING"
-    }
-  ]
-}
+[
+  {
+    "titulo": "Dashboard Assistencial",
+    "descricao": "PCP, NEDOCS, Boarding e indicadores assistenciais",
+    "categoria": "Assistencial",
+    "paineis": ["PCP", "NEDOCS", "Boarding"],
+    "embed": true,
+    "iframe": "https://LINK-EMBED-DO-DASHBOARD-ASSISTENCIAL"
+  },
+  {
+    "titulo": "Controle PJ",
+    "descricao": "Gestão de profissionais PJ",
+    "categoria": "RH / PJ",
+    "paineis": ["Controle PJ"],
+    "embed": true,
+    "iframe": "https://LINK-EMBED-DO-CONTROLE-PJ"
+  }
+]
