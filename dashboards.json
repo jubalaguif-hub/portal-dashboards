@@ -4,30 +4,17 @@
     "descricao": "PCP, NEDOCS e Boarding",
     "categoria": "Assistencial",
     "paineis": [
-      {
-        "nome": "PCP",
-        "iframe": "<iframe title="DASHBOARD_BOARDING_NEDOCS_PCP" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f941f4b-e923-48fd-8817-0788369fd8b8&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3" frameborder="0" allowFullScreen="true"></iframe>"
-      },
-      {
-        "nome": "NEDOCS",
-        "iframe": "<iframe title="DASHBOARD_BOARDING_NEDOCS_PCP" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f941f4b-e923-48fd-8817-0788369fd8b8&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3" frameborder="0" allowFullScreen="true"></iframe>"
-      },
-      {
-        "nome": "Boarding",
-        "iframe": "<iframe title="DASHBOARD_BOARDING_NEDOCS_PCP" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f941f4b-e923-48fd-8817-0788369fd8b8&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3" frameborder="0" allowFullScreen="true"></iframe>G"
-      }
+      { "nome": "PCP", "iframe": "https://example.com" },
+      { "nome": "NEDOCS", "iframe": "https://example.com" },
+      { "nome": "Boarding", "iframe": "https://example.com" }
     ]
-  }
-]
-{
+  },
+  {
     "titulo": "Controle PJ",
     "descricao": "Gestão de profissionais PJ",
     "categoria": "RH / PJ",
     "paineis": [
-      {
-        "nome": "Acessar",
-        "iframe": "<iframe title="CONTROLE PJ - HOB 2026" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=f8151561-0065-4b20-8bba-4d1a487144e5&autoAuth=true&ctid=481ba8b2-542b-49e5-b74a-c5845f85c5e3" frameborder="0" allowFullScreen="true"></iframe>"
-      }
+      { "nome": "Acessar", "iframe": "https://example.com" }
     ]
   }
 ]
