@@ -1,18 +1,19 @@
-[
-  {
-    "titulo": "Dashboard Assistencial",
-    "descricao": "BOARDING, NEDOCS, PCP e indicadores assistenciais",
-    "categoria": "Assistencial",
-    "paineis": ["BOARDING", "NEDOCS", "PCP"],
-    "embed": true,
-    "iframe": "https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
-  },
-  {
-    "titulo": "Controle PJ",
-    "descricao": "Gestão de profissionais PJ",
-    "categoria": "RH / PJ",
-    "paineis": ["Controle PJ"],
-    "embed": true,
-    "iframe": "https://app.powerbi.com/view?r=eyJrIjoiYWM1YzYxZmEtZWM4My00OGQ4LWIzY2UtZDRkMDAzYTIzNzM3IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9"
-  }
-]
+{
+  "titulo": "Dashboard Assistencial",
+  "descricao": "Indicadores assistenciais",
+  "categoria": "Assistencial",
+  "paineis": [
+    {
+      "nome": "PCP",
+      "iframe": "LINK-EMBED-PAGINA-PCP"
+    },
+    {
+      "nome": "NEDOCS",
+      "iframe": "LINK-EMBED-PAGINA-NEDOCS"
+    },
+    {
+      "nome": "Boarding",
+      "iframe": "LINK-EMBED-PAGINA-BOARDING"
+    }
+  ]
+}
