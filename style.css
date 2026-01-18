@@ -1,14 +1,21 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
+
   background:
-    radial-gradient(circle at 10% 10%, #fff7ed 0%, transparent 40%),
-    radial-gradient(circle at 90% 20%, #ffedd5 0%, transparent 35%),
-    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    linear-gradient(
+      rgba(255,255,255,0.88),
+      rgba(255,255,255,0.88)
+    ),
+    url("./bg-header.png");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
   color: #1f2937;
 }
 
-}
 
 
 .header {
@@ -75,10 +82,10 @@ section h2::before {
   padding: 24px;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
- box-shadow:
+  box-shadow:
     0 10px 20px rgba(0,0,0,0.04),
     0 2px 6px rgba(0,0,0,0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
 }
 
 .card h3 {
@@ -113,8 +120,9 @@ footer {
   color: #777;
 }
 section {
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
+
 
 section h2 {
   margin-bottom: 18px;
