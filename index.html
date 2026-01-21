@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Dashboards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <img src="./img/logo.webp" alt="Hospital Metropolitano Odilon Behrens">
+    <div>
+      <h1>Portal de Dashboards</h1>
+      <p>Central de indicadores e controles operacionais</p>
+    </div>
+  </div>
+</header>
+
+<!-- MENU -->
+<nav class="menu">
+  <button onclick="showSection('assistencial')">🩺 Assistencial</button>
+  <button onclick="showSection('rh')">👥 RH / PJ</button>
+  <button onclick="showSection('planilhas')">📑 Planilhas</button>
+</nav>
+
+<main>
+
+<!-- ASSISTENCIAL -->
+<section id="assistencial" class="content-section active">
+  <h2>Assistencial</h2>
+
+  <div class="grid">
+    <div class="card assistencial-card">
+      <div class="card-banner"></div>
+      <h3>📊 Dashboard Assistencial</h3>
+      <p>Indicadores PCP, NEDOCS e Boarding</p>
+      <ul>
+        <li>PCP</li>
+        <li>NEDOCS</li>
+        <li>Boarding</li>
+      </ul>
+      <a href="https://app.powerbi.com/view?r=eyJrIjoiNWFiNjBhNDAtZWFiOS00NmZlLWFlNDMtMjE1NTc2MDZjZjc4IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9" target="_blank">
+        Acessar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RH -->
+<section id="rh" class="content-section">
+  <h2>RH / PJ</h2>
+
+  <div class="grid">
+    <div class="card rh-card">
+      <div class="card-banner"></div>
+      <h3>👥 Controle PJ</h3>
+      <p>Gestão e acompanhamento de profissionais PJ</p>
+      <a href="https://app.powerbi.com/view?r=eyJrIjoiYWM1YzYxZmEtZWM4My00OGQ4LWIzY2UtZDRkMDAzYTIzNzM3IiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9" target="_blank">
+        Acessar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PLANILHAS -->
+<section id="planilhas" class="content-section">
+  <h2>Planilhas</h2>
+
+  <div class="grid">
+
+    <div class="card planilha-card horas-pj">
+      <div class="card-banner"></div>
+      <h3>🕒 Registro Horas PJ</h3>
+      <p>Registro operacional diário</p>
+      <a href="https://docs.google.com/spreadsheets/d/1lBT8U_2NL-e05U4FvugZJsB1ErIA5dZ1-30H_MGbpRM/edit" target="_blank">Acessar</a>
+    </div>
+
+    <div class="card planilha-card ocorrencias">
+      <div class="card-banner"></div>
+      <h3>📋 Ocorrências PS/UPA</h3>
+      <p>Base consolidada de registros</p>
+      <a href="https://docs.google.com/spreadsheets/d/1Qk6-EyCVof7HBXTLYOeVNi7VMgnOzKVAg_2sBnObSgo/edit" target="_blank">Acessar</a>
+    </div>
+
+    <div class="card planilha-card kanban">
+      <div class="card-banner"></div>
+      <h3>🗂️ Kanban HOB</h3>
+      <p>Controle visual de eventos</p>
+      <a href="https://docs.google.com/spreadsheets/d/1IzedA9tTZ7SYWicolQwZ1DcIdWgk98Ys7TXS9H4vejM/edit" target="_blank">Acessar</a>
+    </div>
+
+    <div class="card planilha-card udc">
+      <div class="card-banner"></div>
+      <h3>📅 Registros UDC</h3>
+      <p>Escalas e turnos</p>
+      <a href="https://docs.google.com/spreadsheets/d/19esh86uN5GA-tKn_Y3Swrtv6RjIOI9kerQdyW8T_r98/edit" target="_blank">Acessar</a>
+    </div>
+
+    <div class="card planilha-card formulario">
+      <div class="card-banner"></div>
+      <h3>📝 Formulário de Ocorrências</h3>
+      <p>Registro e apuração de horas</p>
+      <a href="https://docs.google.com/forms/d/1PopTgsNAvpAZo1DcuSebuWDJZU-EE4VNI8voNbJlCQE/edit" target="_blank">Acessar</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© Portal de Dashboards – Hospital Metropolitano Odilon Behrens</p>
+</footer>
+
+<!-- BOTÃO DARK MODE -->
+<div class="dark-toggle" onclick="toggleDarkMode()" title="Alternar modo escuro">
+  🌙
+</div>
+
+<!-- JS (defer para melhor performance) -->
+<script defer>
+const sections = document.querySelectorAll('.content-section');
+
+function showSection(id) {
+  sections.forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  const toggle = document.querySelector('.dark-toggle');
+  toggle.textContent =
+    document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+}
+</script>
+
+</body>
+</html>
