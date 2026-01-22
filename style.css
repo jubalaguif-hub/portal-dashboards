@@ -196,6 +196,7 @@ section h2 {
 .kanban .card-banner { background-image: url("./img/planilhas-kanban.webp"); }
 .udc .card-banner { background-image: url("./img/planilhas-udc.webp"); }
 .formulario .card-banner { background-image: url("./img/planilhas-formulario.webp"); }
+.mvexames .card-banner { background-image: url("./img/tomo.webp"); }
 
 /* TEXTO */
 .card p {
