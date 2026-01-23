@@ -197,6 +197,7 @@ section h2 {
 .udc .card-banner { background-image: url("./img/planilhas-udc.webp"); }
 .formulario .card-banner { background-image: url("./img/planilhas-formulario.webp"); }
 .mvexames .card-banner { background-image: url("./img/tomo.webp"); }
+.ambulancia .card-banner { background-image: url("./img/ambulancia.png"); }
 
 /* TEXTO */
 .card p {
