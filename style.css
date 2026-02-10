@@ -1272,6 +1272,7 @@ body::-webkit-scrollbar-thumb:hover {
 .banner.planilha-kanban { background-image: url("./img/banners/planilhas-kanban.webp"); }
 .banner.planilha-udc { background-image: url("./img/banners/planilhas-udc.webp"); }
 .banner.planilha-formulario { background-image: url("./img/banners/planilhas-formulario.webp"); }
+.banner.hob (2) { background-image: url("./img/banners/hob (2).jpg"); }
 
 /* MODAIS DE EDITAR E DELETAR */
 .edit-modal-overlay,
