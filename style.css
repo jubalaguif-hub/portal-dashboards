@@ -1150,29 +1150,22 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* BANNERS */
+/* BANNERS - Estilo de Card de Referência */
 .banner {
   position: relative;
-  height: 375px;
-  margin: 30px auto;
-  max-width: 1248px;
-  padding: 24px;
+  height: 220px; /* Altura menor para caber em grade */
+  width: 100%;
+  margin: 0; /* Remove a margem automática antiga */
   display: flex;
-  align-items: flex-end;
-  border-radius: 30px;
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  border-radius: 20px;
   text-decoration: none;
   background-size: cover;
   background-position: center;
-  transition: 
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  will-change: transform;
-  animation: fadeInUp 0.8s ease-out forwards;
-  opacity: 0;
-  animation-delay: calc(var(--banner-index, 0) * 0.2s);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .banner::before {
