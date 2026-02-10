@@ -13,30 +13,24 @@
 
 <div class="app">
 
-  <!-- BOTÃO DARK/LIGHT FLUTUANTE -->
   <button id="theme-toggle" class="theme-toggle-float" aria-label="Alternar modo escuro/claro">
     🌙
   </button>
 
-  <!-- SIDEBAR -->
   <aside class="sidebar" role="navigation" aria-label="Menu de navegação principal">
 
-    <!-- LOGO -->
     <div class="logo">
       <img src="./img/logos/logo.webp" alt="Logo do Hospital Metropolitano Odilon Behrens">
     </div>
 
-    <!-- HAMBÚRGUER MOBILE -->
     <button id="hamburger" class="hamburger" aria-label="Fechar menu de navegação" aria-expanded="true">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <!-- BUSCA -->
     <input type="text" class="search" placeholder="Buscar dashboards..." aria-label="Buscar dashboards" />
 
-    <!-- MENU -->
     <nav class="menu" aria-label="Menu de categorias">
 
       <div class="menu-item">
@@ -61,7 +55,6 @@
             <span class="icon plani" aria-hidden="true"></span>
             Planilhas
           </a>
-          <!-- Container para categorias customizadas -->
           <div id="custom-categories-menu"></div>
         </div>
       </div>
@@ -77,7 +70,6 @@
 
         <div id="submenu-config" class="submenu" role="menu">
           
-          <!-- Submenu Planilha -->
           <a class="submenu-category-toggle" aria-expanded="false" data-submenu="submenu-sheets" role="menuitem">
             <img src="./img/icon/planilhas.png" alt="" style="width: 20px; height: 20px;">
             Planilha
@@ -98,7 +90,6 @@
             </a>
           </div>
 
-          <!-- Submenu Categoria -->
           <a class="submenu-category-toggle" aria-expanded="false" data-submenu="submenu-categories" role="menuitem">
             <img src="./img/icon/categoria.png" alt="" style="width: 20px; height: 20px;">
             Categoria
@@ -126,10 +117,8 @@
 
   </aside>
 
-  <!-- CONTEÚDO PRINCIPAL -->
   <main class="content" role="main">
 
-    <!-- ASSISTENCIAL -->
     <section id="assistencial" class="section active" aria-hidden="false">
       <h1 class="section-title">Assistencial</h1>
       
@@ -147,16 +136,13 @@
               target="_blank" class="banner ambulancia" aria-label="Abrir dashboard: Painel de Atendimentos" data-sheet-id="default-ambulancia">
         <div class="banner-text"><h2>Painel de Atendimentos por Unidade Analítica</h2></div>
       </a>
-    </section>
 
-    
       <a href="https://app.powerbi.com/view?r=eyJrIjoiNzNlNjllZTAtODMyMC00OWFiLTg5ZDQtM2ZkNGQ2N2VjYzZhIiwidCI6IjQ4MWJhOGIyLTU0MmItNDllNS1iNzRhLWM1ODQ1Zjg1YzVlMyJ9" 
-              target="_blank" class="banner hob-upa" aria-label="Abrir dashboard: Painel de Atendimentos" data-sheet-id="default-hob (2)">
+              target="_blank" class="banner hob-upa" aria-label="Abrir dashboard: Painel de Atendimentos" data-sheet-id="default-hob-upa">
         <div class="banner-text"><h2>Poli-HOB e UPA</h2></div>
       </a>
     </section>
-    
-    <!-- RH -->
+
     <section id="rh" class="section" aria-hidden="true">
       <h1 class="section-title">Recursos Humanos</h1>
       
@@ -166,7 +152,6 @@
       </a>
     </section>
 
-    <!-- PLANILHAS -->
     <section id="planilhas" class="section" aria-hidden="true">
       <h1 class="section-title">Planilhas Compartilhadas</h1>
       
@@ -196,14 +181,12 @@
       </a>
     </section>
 
-    <!-- Container para seções de categorias customizadas -->
     <div id="custom-sections-container"></div>
 
   </main>
 
 </div>
 
-<!-- MODAL DE CONFIGURAÇÕES -->
 <div id="config-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
   <div class="modal-content">
     <div class="modal-header">
@@ -215,12 +198,7 @@
       
       <div class="form-group">
         <label for="sheet-category">Categoria *</label>
-        <select 
-          id="sheet-category" 
-          name="category" 
-          required
-          aria-required="true"
-        >
+        <select id="sheet-category" name="category" required aria-required="true">
           <option value="">Selecione uma categoria...</option>
           <option value="assistencial">Assistencial</option>
           <option value="rh">Recursos Humanos (RH)</option>
@@ -228,62 +206,35 @@
         </select>
       </div>
 
-      <!-- Nome da Planilha -->
       <div class="form-group">
         <label for="sheet-name">Nome da Planilha *</label>
-        <input 
-          type="text" 
-          id="sheet-name" 
-          name="name" 
-          placeholder="Ex: Relatório Financeiro"
-          required
-          aria-required="true"
-        />
+        <input type="text" id="sheet-name" name="name" placeholder="Ex: Relatório Financeiro" required aria-required="true" />
       </div>
 
-      <!-- Link da Planilha -->
       <div class="form-group">
         <label for="sheet-link">Link (URL) *</label>
-        <input 
-          type="url" 
-          id="sheet-link" 
-          name="link" 
-          placeholder="https://docs.google.com/spreadsheets/..."
-          required
-          aria-required="true"
-        />
+        <input type="url" id="sheet-link" name="link" placeholder="https://docs.google.com/spreadsheets/..." required aria-required="true" />
       </div>
 
-      <!-- Imagem (Base64 ou URL) -->
       <div class="form-group">
         <label for="sheet-image">Imagem (1248x375px) *</label>
-        <input 
-          type="file" 
-          id="sheet-image" 
-          name="image" 
-          accept="image/*"
-          aria-describedby="image-help"
-        />
-        <small id="image-help">Tamanho ideal: 1248x375px (será ajustado automaticamente)</small>
+        <input type="file" id="sheet-image" name="image" accept="image/*" />
+        <small id="image-help">Tamanho ideal: 1248x375px</small>
       </div>
 
-      <!-- Botões -->
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Adicionar Planilha</button>
         <button type="button" id="cancel-form" class="btn btn-secondary">Cancelar</button>
       </div>
 
-      <!-- Mensagem de Status -->
       <div id="form-message" class="form-message" style="display: none;"></div>
 
     </form>
   </div>
 </div>
 
-<!-- OVERLAY DO MODAL -->
 <div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
 
-<!-- MODAL DE CATEGORIAS -->
 <div id="category-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="category-modal-title">
   <div class="modal-content">
     <div class="modal-header">
@@ -295,56 +246,32 @@
       
       <div class="form-group">
         <label for="category-name">Nome da Categoria *</label>
-        <input 
-          type="text" 
-          id="category-name" 
-          name="name" 
-          placeholder="Ex: Financeiro"
-          required
-          aria-required="true"
-        />
+        <input type="text" id="category-name" name="name" placeholder="Ex: Financeiro" required aria-required="true" />
       </div>
 
       <div class="form-group">
-        <label for="category-icon-text">Ícone (emoji ou texto, opcional)</label>
-        <input 
-          type="text" 
-          id="category-icon-text" 
-          name="icon" 
-          placeholder="Ex: 💰"
-          maxlength="5"
-        />
+        <label for="category-icon-text">Ícone (emoji ou texto)</label>
+        <input type="text" id="category-icon-text" name="icon" placeholder="Ex: 💰" maxlength="5" />
       </div>
 
       <div class="form-group">
-        <label for="category-icon-image">Imagem para Ícone (opcional, PNG/JPG)</label>
-        <input 
-          type="file" 
-          id="category-icon-image" 
-          name="iconImage" 
-          accept="image/png,image/jpeg"
-          aria-describedby="icon-image-help"
-        />
-        <small id="icon-image-help">Tamanho ideal: 24x24px (será redimensionada automaticamente)</small>
+        <label for="category-icon-image">Imagem para Ícone</label>
+        <input type="file" id="category-icon-image" name="iconImage" accept="image/png,image/jpeg" />
       </div>
 
-      <!-- Botões -->
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Criar Categoria</button>
         <button type="button" id="cancel-category-form" class="btn btn-secondary">Cancelar</button>
       </div>
 
-      <!-- Mensagem de Status -->
       <div id="category-form-message" class="form-message" style="display: none;"></div>
 
     </form>
   </div>
 </div>
 
-<!-- OVERLAY DO MODAL DE CATEGORIAS -->
 <div id="category-modal-overlay" class="modal-overlay" aria-hidden="true"></div>
 
-<!-- SCRIPT EXTERNO -->
 <script src="script.js" defer></script>
 
 </body>
