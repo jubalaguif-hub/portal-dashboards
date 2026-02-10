@@ -1,4 +1,6 @@
-/* VARIÁVEIS CSS */
+/* ============================================================================
+   VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ============================================================================ */
 :root {
   --orange: #d86a2d;
   --orange-dark: #b8571f;
@@ -6,6 +8,7 @@
   --bg-light: #f5f5f5;
   --bg-panel: #1e1e1e;
   --text: #e5e7eb;
+  --text-light: #b0b0b0;
   --border: #333333;
   --toggle-bg: rgba(255, 255, 255, 0.1);
 }
@@ -14,6 +17,7 @@ html[data-theme="light"] {
   --bg-dark: #ffffff;
   --bg-light: #f5f5f5;
   --text: #333333;
+  --text-light: #666666;
   --border: #e0e0e0;
 }
 
@@ -24,51 +28,145 @@ body {
   background: var(--bg-dark);
   color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* SIDEBAR E ESTRUTURA (Mantidos do seu original) */
+/* ============================================================================
+   SIDEBAR (RESTAURADA E COMPLETA)
+   ============================================================================ */
 .app { display: flex; min-height: 100vh; }
+
 .sidebar {
   width: 240px;
+  min-width: 240px;
   background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 50%, #2a1810 100%);
   padding: 24px 16px;
   position: fixed;
+  left: 0;
+  top: 0;
   height: 100vh;
   z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 2px 0 20px rgba(0,0,0,0.4);
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange) rgba(0, 0, 0, 0.2);
 }
 
-/* CONTEÚDO PRINCIPAL - CONFIGURAÇÃO DO GRID */
+/* LOGO */
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+.logo img { max-width: 170px; height: auto; }
+
+/* BUSCA NA SIDEBAR */
+.search {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 14px;
+}
+
+/* ITENS DO MENU */
+.menu { display: flex; flex-direction: column; gap: 10px; }
+
+.menu-dashboard, .menu-config {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.menu-dashboard:hover, .menu-config:hover { background: rgba(255,255,255,0.2); transform: translateX(5px); }
+
+.menu-dashboard .left, .menu-config .left { display: flex; align-items: center; gap: 12px; }
+
+/* ICONES DO MENU */
+.icon { display: inline-block; width: 20px; height: 20px; background-size: contain; background-repeat: no-repeat; }
+.icon.home { background-image: url('./img/icon/home.png'); }
+.icon.manage { background-image: url('./img/icon/manage.png'); }
+
+.arrow { transition: transform 0.3s ease; }
+.arrow.rotate { transform: rotate(180deg); }
+
+/* SUBMENUS */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.submenu.open { max-height: 1000px; padding-top: 10px; }
+
+.submenu a, .submenu-item {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+.submenu a:hover, .submenu-item:hover { background: rgba(255,255,255,0.15); padding-left: 18px; }
+.submenu a.active { background: rgba(255,255,255,0.2); border-left: 4px solid #fff; }
+
+/* SUBMENUS ANINHADOS (Gerenciar) */
+.submenu-category-toggle { cursor: pointer; display: flex; justify-content: space-between; width: 100%; }
+.submenu-nested { max-height: 0; overflow: hidden; padding-left: 20px; transition: 0.3s; }
+.submenu-nested.open { max-height: 300px; }
+
+/* ============================================================================
+   CONTEÚDO PRINCIPAL (ESTILO GRADE BH)
+   ============================================================================ */
 .content {
   flex: 1;
   padding: 48px;
   background: var(--bg-light);
-  margin-left: 240px;
+  margin-left: 240px; /* Alinhado com a largura da sidebar */
   min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
 .section {
-  display: none; /* Escondido por padrão */
-  /* Cria a grade: colunas automáticas de no mínimo 280px */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
   padding: 20px 0;
 }
-
-.section.active {
-  display: grid; /* Ativa a grade quando a seção está ativa */
-}
+.section.active { display: grid; }
 
 .section-title {
-  grid-column: 1 / -1; /* Título ocupa a largura toda da grade */
+  grid-column: 1 / -1;
   font-size: 28px;
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
   color: var(--text);
 }
 
-/* CARDS (BANNERS) - ESTILO PREFEITURA BH */
+/* CARDS (ESTILO GRADE BH) */
 .banner {
   position: relative;
-  height: 200px; /* Altura retangular fixa */
+  height: 200px;
   width: 100%;
   border-radius: 16px;
   text-decoration: none;
@@ -76,46 +174,30 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #0056b3; /* Cor azul base da prefeitura */
+  background-color: #0056b3;
   background-size: cover;
   background-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Camada escura para o texto não sumir na foto */
 .banner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); 
-  transition: background 0.3s ease;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.banner:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-}
+.banner:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
 
-.banner:hover::before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.banner-text {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 15px;
-}
-
+.banner-text { position: relative; z-index: 2; text-align: center; }
 .banner-text h2 {
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
-  font-weight: 700;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* IMAGENS DE FUNDO ESPECÍFICAS */
+/* IMAGENS ESPECÍFICAS */
 .banner.assistencial { background-image: url("./img/banners/assistencial.webp"); }
 .banner.exames { background-image: url("./img/banners/tomo.webp"); }
 .banner.ambulancia { background-image: url("./img/banners/ambulancia.webp"); }
@@ -127,31 +209,52 @@ body {
 .banner.planilha-formulario { background-image: url("./img/banners/planilhas-formulario.webp"); }
 .banner.hob-upa { background-image: url("./img/banners/hob (2).jpg"); }
 
-/* MODAL E OUTROS ESTILOS (Mantidos conforme seu envio original) */
+/* ============================================================================
+   MODAIS E UTILITÁRIOS (Restante mantido)
+   ============================================================================ */
 .modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1500;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
 }
+.modal-overlay.active { display: block; }
+
 .modal {
   display: none;
   position: fixed;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   background: var(--bg-dark);
-  padding: 20px;
+  padding: 30px;
   border-radius: 12px;
-  z-index: 1501;
+  z-index: 2001;
   width: 90%;
   max-width: 500px;
 }
-/* ... resto dos estilos de formulários e botões ... */
+.modal.active { display: block; }
 
-/* RESPONSIVO */
+/* Botão Tema Flutuante */
+.theme-toggle-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: none;
+  cursor: pointer;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RESPONSIVIDADE */
 @media (max-width: 767px) {
-  .sidebar { transform: translateX(-100%); transition: 0.3s; }
+  .sidebar { transform: translateX(-100%); }
   .sidebar.open { transform: translateX(0); }
   .content { margin-left: 0; padding: 20px; }
   .section { grid-template-columns: 1fr; }
