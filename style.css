@@ -1,24 +1,16 @@
-/* ============================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
-   ============================================================================ */
+/* VARIÁVEIS */
 :root {
   --orange: #d86a2d;
   --orange-dark: #b8571f;
   --bg-dark: #121212;
   --bg-light: #f5f5f5;
-  --bg-panel: #1e1e1e;
   --text: #e5e7eb;
   --text-light: #b0b0b0;
-  --border: #333333;
-  --toggle-bg: rgba(255, 255, 255, 0.1);
 }
 
 html[data-theme="light"] {
   --bg-dark: #ffffff;
-  --bg-light: #f5f5f5;
   --text: #333333;
-  --text-light: #666666;
-  --border: #e0e0e0;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,9 +22,7 @@ body {
   line-height: 1.6;
 }
 
-/* ============================================================================
-   2. SIDEBAR (ESTRUTURA E NAVEGAÇÃO)
-   ============================================================================ */
+/* ESTRUTURA LADO A LADO */
 .app { display: flex; min-height: 100vh; }
 
 .sidebar {
@@ -41,34 +31,12 @@ body {
   background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 50%, #2a1810 100%);
   padding: 24px 16px;
   position: fixed;
-  left: 0;
-  top: 0;
   height: 100vh;
   z-index: 1000;
   overflow-y: auto;
-  box-shadow: 2px 0 20px rgba(0,0,0,0.4);
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 2px solid rgba(255,255,255,0.2);
-}
-.logo img { max-width: 170px; height: auto; }
-
-.search {
-  width: 100%;
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-}
-
-/* BOTÕES DE MENU (DASHBOARD E GERENCIAR) */
+/* BOTÕES GATILHOS (Dashboard e Gerenciar) */
 .menu-dashboard, .menu-config {
   width: 100%;
   display: flex;
@@ -81,21 +49,19 @@ body {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
   margin-bottom: 10px;
+  transition: 0.3s;
 }
-.menu-dashboard:hover, .menu-config:hover { background: rgba(255,255,255,0.2); }
 
 .left { display: flex; align-items: center; gap: 12px; }
 
-/* REINSERÇÃO DOS ÍCONES DA SIDEBAR */
+/* ÍCONES DA SIDEBAR */
 .icon { 
   display: inline-block; 
-  width: 20px; 
-  height: 20px; 
+  width: 20px; height: 20px; 
   background-size: contain; 
-  background-repeat: no-repeat;
-  background-position: center;
+  background-repeat: no-repeat; 
+  background-position: center; 
 }
 .icon.home { background-image: url('./img/icon/home.png'); }
 .icon.manage { background-image: url('./img/icon/manage.png'); }
@@ -109,18 +75,23 @@ body {
 .arrow { transition: transform 0.3s ease; }
 .arrow.rotate { transform: rotate(180deg); }
 
-/* SUBMENUS (Click deve funcionar agora) */
-.submenu {
+/* SUBMENUS (Onde a mágica acontece) */
+.submenu, .submenu-nested {
+  max-height: 0; /* Começa fechado */
+  overflow: hidden;
+  transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
   padding-left: 10px;
 }
-.submenu.open { max-height: 1000px; margin-bottom: 10px; }
 
-.submenu a, .submenu-category-toggle {
+/* O JavaScript adiciona a classe .open e o CSS expande */
+.submenu.open, .submenu-nested.open {
+  max-height: 1000px;
+  margin-bottom: 15px;
+}
+
+.submenu a, .submenu-item, .submenu-category-toggle {
   color: #fff;
   text-decoration: none;
   padding: 12px;
@@ -131,26 +102,16 @@ body {
   gap: 10px;
   cursor: pointer;
 }
-.submenu a:hover { background: rgba(255,255,255,0.1); }
+
+.submenu a:hover { background: rgba(255,255,255,0.15); padding-left: 18px; }
 .submenu a.active { background: rgba(255,255,255,0.2); border-left: 4px solid #fff; }
 
-.submenu-nested {
-  max-height: 0;
-  overflow: hidden;
-  padding-left: 25px;
-  transition: max-height 0.3s ease;
-}
-.submenu-nested.open { max-height: 300px; }
-
-/* ============================================================================
-   3. CONTEÚDO PRINCIPAL (GRADE DE CARDS)
-   ============================================================================ */
+/* CONTEÚDO PRINCIPAL (GRADE BH) */
 .content {
   flex: 1;
   padding: 48px;
   background: var(--bg-light);
-  margin-left: 240px; /* Mantém espaço para sidebar fixa */
-  min-height: 100vh;
+  margin-left: 240px;
 }
 
 .section {
@@ -158,40 +119,27 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
 }
+
 .section.active { display: grid; }
 
-.section-title {
-  grid-column: 1 / -1;
-  font-size: 28px;
-  margin-bottom: 24px;
-  color: var(--text);
-}
-
-/* ESTILO DOS CARDS (BANNERS) */
 .banner {
   position: relative;
   height: 200px;
   border-radius: 16px;
-  text-decoration: none;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   background-color: #0056b3;
   background-size: cover;
   background-position: center;
+  text-decoration: none;
   transition: transform 0.3s ease;
 }
-.banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-.banner:hover { transform: translateY(-8px); }
 
-.banner-text { position: relative; z-index: 2; text-align: center; color: #fff; }
-.banner-text h2 { font-size: 1.4rem; text-transform: uppercase; }
+.banner::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+.banner:hover { transform: translateY(-8px); }
+.banner-text { position: relative; z-index: 2; color: #fff; text-align: center; }
 
 /* IMAGENS ESPECÍFICAS */
 .banner.assistencial { background-image: url("./img/banners/assistencial.webp"); }
@@ -204,52 +152,3 @@ body {
 .banner.planilha-udc { background-image: url("./img/banners/planilhas-udc.webp"); }
 .banner.planilha-formulario { background-image: url("./img/banners/planilhas-formulario.webp"); }
 .banner.hob-upa { background-image: url("./img/banners/hob (2).jpg"); }
-
-/* ============================================================================
-   4. MODAIS E RESPONSIVIDADE
-   ============================================================================ */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1500;
-}
-.modal-overlay.active { display: block; }
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--bg-dark);
-  padding: 30px;
-  border-radius: 12px;
-  z-index: 1501;
-  width: 90%;
-  max-width: 500px;
-}
-.modal.active { display: block; }
-
-.theme-toggle-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--orange);
-  border: none;
-  cursor: pointer;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 767px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: translateX(0); }
-  .content { margin-left: 0; padding: 20px; }
-  .section { grid-template-columns: 1fr; }
-}
