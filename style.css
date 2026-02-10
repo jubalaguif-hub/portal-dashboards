@@ -1953,4 +1953,35 @@ input:focus-visible {
     background: white;
     color: #000;
   }
+/* NOVO LAYOUT PARA BANNERS (CARDS EM GRID) */
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px;
 }
+
+.banner {
+  background: linear-gradient(135deg, #0b5ed7, #0951b2);
+  border-radius: 18px;
+  padding: 24px;
+  min-height: 140px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.banner:hover {
+  transform: scale(1.03);
+}
+
+.banner h2 {
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+}
+
