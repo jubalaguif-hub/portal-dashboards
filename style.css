@@ -1119,7 +1119,6 @@ body::-webkit-scrollbar-thumb:hover {
 /* SEÇÕES */
 .section {
   display: none;
-  animation: fadeIn 0.4s ease;
 }
 
 .section.active {
