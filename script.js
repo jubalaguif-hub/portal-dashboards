@@ -826,9 +826,54 @@ async function saveCustomSheet(sheet) {
   }
 
 }
-function loadCustomSheets() {
-  const sheets = JSON.parse(localStorage.getItem(STORAGE_KEY_SHEETS) || '[]');
-  const originalCategories = JSON.parse(localStorage.getItem(STORAGE_KEY_ORIGINAL_CATEGORIES) || '{}');
+async function loadCustomSheets() {
+
+  try {
+
+    const response = await fetch('/api/sheets');
+
+    if (!response.ok) {
+      throw new Error('Erro ao buscar planilhas');
+    }
+
+    const sheets = await response.json();
+
+    const originalCategories = JSON.parse(localStorage.getItem(STORAGE_KEY_ORIGINAL_CATEGORIES) || '{}');
+
+    const allBanners = document.querySelectorAll('.banner');
+
+    allBanners.forEach(banner => {
+
+      const sheetId = banner.getAttribute('data-sheet-id');
+
+      if (sheetId && originalCategories[sheetId]) {
+
+        const newCategoryId = originalCategories[sheetId];
+        const newSection = document.getElementById(newCategoryId);
+
+        if (newSection && banner.parentElement.id !== newCategoryId) {
+          newSection.appendChild(banner);
+        }
+
+      }
+
+    });
+
+    sheets.forEach(sheet => {
+      addSheetToDOM(sheet);
+    });
+
+    if (sheets.length > 0) {
+      console.log(`✅ ${sheets.length} planilha(s) carregadas do banco`);
+    }
+
+  } catch (error) {
+
+    console.error('Erro ao carregar planilhas:', error);
+
+  }
+
+}
   
   // Aplicar categorias alteradas às planilhas originais
   const allBanners = document.querySelectorAll('.banner');
@@ -1837,4 +1882,5 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
 
