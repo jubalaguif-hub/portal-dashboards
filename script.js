@@ -1401,15 +1401,15 @@ function handleAddCategory(e) {
 
 function getAllCategories() {
   const customCategories = JSON.parse(localStorage.getItem(STORAGE_KEY_CATEGORIES) || '[]');
-  
+
   const defaultCategoriesObjects = DEFAULT_CATEGORIES.map(name => ({
-    id: 'default-' + name,
+    id: name, // ✅ aqui
     name: name.charAt(0).toUpperCase() + name.slice(1),
     color: '#d86a2d',
     icon: getDefaultCategoryIcon(name),
     isDefault: true
   }));
-  
+
   return [...defaultCategoriesObjects, ...customCategories];
 }
 
@@ -1853,3 +1853,4 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
