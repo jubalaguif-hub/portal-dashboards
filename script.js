@@ -898,7 +898,7 @@ async function loadCustomSheets() {
 }
 function addSheetToDOM(sheet) {
   // Usar o ID da categoria diretamente como ID da seção
-  const sectionId = sheet.category;
+const sectionId = sheet.category.toLowerCase();
   const section = document.getElementById(sectionId);
   
   if (!section) {
@@ -1880,6 +1880,7 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
 
 
 
