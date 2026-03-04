@@ -800,12 +800,32 @@ function resizeImage(img, maxWidth, maxHeight) {
   return canvas;
 }
 
-function saveCustomSheet(sheet) {
-  let sheets = JSON.parse(localStorage.getItem(STORAGE_KEY_SHEETS) || '[]');
-  sheets.push(sheet);
-  localStorage.setItem(STORAGE_KEY_SHEETS, JSON.stringify(sheets));
-}
+async function saveCustomSheet(sheet) {
 
+  try {
+
+    const response = await fetch('/api/sheets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sheet)
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao salvar no banco');
+    }
+
+    console.log('✅ Planilha salva no Neon');
+
+  } catch (error) {
+
+    console.error('Erro ao salvar planilha:', error);
+    alert('Erro ao salvar planilha no banco');
+
+  }
+
+}
 function loadCustomSheets() {
   const sheets = JSON.parse(localStorage.getItem(STORAGE_KEY_SHEETS) || '[]');
   const originalCategories = JSON.parse(localStorage.getItem(STORAGE_KEY_ORIGINAL_CATEGORIES) || '{}');
@@ -1817,3 +1837,4 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
