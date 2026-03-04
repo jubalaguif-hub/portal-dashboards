@@ -832,43 +832,50 @@ async function saveCustomSheet(sheet) {
 }
 
 async function loadCustomSheets() {
-  try {
-    const response = await fetch('/api/sheets');
-    if (!response.ok) throw new Error('Erro ao buscar planilhas');
 
+  try {
+
+    const response = await fetch("/api/sheets");
     const sheets = await response.json();
 
-    // Salva uma cópia local para manter os recursos de editar/deletar funcionando
-    localStorage.setItem(STORAGE_KEY_SHEETS, JSON.stringify(sheets));
-
-    const originalCategories = JSON.parse(localStorage.getItem(STORAGE_KEY_ORIGINAL_CATEGORIES) || '{}');
-
-    // Aplicar categorias alteradas às planilhas originais
-    const allBanners = document.querySelectorAll('.banner');
-    allBanners.forEach(banner => {
-      const sheetId = banner.getAttribute('data-sheet-id');
-      if (sheetId && originalCategories[sheetId]) {
-        const newCategoryId = originalCategories[sheetId];
-        const newSection = document.getElementById(newCategoryId);
-
-        if (newSection && banner.parentElement.id !== newCategoryId) {
-          newSection.appendChild(banner);
-        }
-      }
-    });
+    if (!sheets || sheets.length === 0) {
+      console.log("Nenhuma planilha no banco");
+      return;
+    }
 
     sheets.forEach(sheet => {
-      addSheetToDOM(sheet);
+
+      const section = document.getElementById(sheet.category);
+
+      if (!section) {
+        console.warn("Categoria não encontrada:", sheet.category);
+        return;
+      }
+
+      const banner = document.createElement("a");
+      banner.href = sheet.link;
+      banner.target = "_blank";
+      banner.className = "banner";
+      banner.style.backgroundImage = `url('${sheet.image}')`;
+
+      banner.innerHTML = `
+        <div class="banner-text">
+          <h2>${sheet.name}</h2>
+        </div>
+      `;
+
+      section.appendChild(banner);
+
     });
 
-    if (sheets.length > 0) {
-      console.log(`✅ ${sheets.length} planilha(s) carregada(s) do banco`);
-    }
+    console.log("Sheets carregadas do banco:", sheets.length);
+
   } catch (error) {
-    console.error('Erro ao carregar planilhas:', error);
+
+    console.error("Erro carregando sheets:", error);
+
   }
 }
-
 function addSheetToDOM(sheet) {
   // Usar o ID da categoria diretamente como ID da seção
   const sectionId = sheet.category;
@@ -1853,4 +1860,5 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
 
