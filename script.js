@@ -693,7 +693,7 @@ function closeConfigModal() {
   }
 }
 
-function handleAddSheet(e) {
+async function handleAddSheet(e) {
   e.preventDefault();
   
   const name = document.getElementById('sheet-name').value.trim();
@@ -713,59 +713,75 @@ function handleAddSheet(e) {
     return;
   }
 
-  // Se o usuário forneceu uma imagem, processa; senão usa a logo padrão
   const file = imageInput.files[0];
 
   const finalizeWithImage = async (imageSrc) => {
-    const sheet = {
-      id: 'custom-' + Date.now(),
-      name: name,
-      link: link,
-      category: category,
-      image: imageSrc,
-      timestamp: new Date().toISOString()
-    };
 
-    const savedSheet = await saveCustomSheet(sheet);
-    addSheetToDOM(savedSheet || sheet);
-    showFormMessage('✅ Planilha adicionada com sucesso!', 'success');
+    try {
 
-    setTimeout(() => {
-      closeConfigModal();
-      document.getElementById('add-sheet-form').reset();
-    }, 2000);
+      const response = await fetch("/api/sheets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          link: link,
+          category: category,
+          image: imageSrc
+        })
+      });
 
-    console.log('✅ Nova planilha adicionada:', sheet);
+      const savedSheet = await response.json();
+
+      addSheetToDOM(savedSheet);
+
+      showFormMessage('✅ Planilha adicionada com sucesso!', 'success');
+
+      setTimeout(() => {
+        closeConfigModal();
+        document.getElementById('add-sheet-form').reset();
+      }, 1500);
+
+    } catch (error) {
+
+      console.error(error);
+      showFormMessage('Erro ao salvar no banco', 'error');
+
+    }
+
   };
 
   if (file) {
+
     showFormMessage('Processando imagem...', 'loading');
+
     const reader = new FileReader();
 
     reader.onload = (event) => {
+
       const img = new Image();
+
       img.onload = () => {
+
         const canvas = resizeImage(img, 1248, 375);
         const resizedBase64 = canvas.toDataURL('image/webp', 0.9);
-        finalizeWithImage(resizedBase64);
-      };
 
-      img.onerror = () => {
-        showFormMessage('Erro ao carregar imagem. Tente outro arquivo.', 'error');
+        finalizeWithImage(resizedBase64);
+
       };
 
       img.src = event.target.result;
-    };
 
-    reader.onerror = () => {
-      showFormMessage('Erro ao ler arquivo.', 'error');
     };
 
     reader.readAsDataURL(file);
+
   } else {
-    // Usar logo padrão da pasta img/logos
+
     const defaultLogoPath = './img/logos/logo.webp';
     finalizeWithImage(defaultLogoPath);
+
   }
 }
 
@@ -1860,5 +1876,6 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
 
 
