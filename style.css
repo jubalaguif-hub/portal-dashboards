@@ -1150,72 +1150,64 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* BANNERS */
+/* ================================
+   LAYOUT DE CARDS (BANNERS)
+================================ */
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.section.active {
+  display: grid;
+}
+
 .banner {
   position: relative;
-  height: 375px;
-  margin: 30px auto;
-  max-width: 1248px;
-  padding: 24px;
+  height: 140px;
+  padding: 20px;
+  border-radius: 18px;
+
   display: flex;
-  align-items: flex-end;
-  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+
   text-decoration: none;
+
   background-size: cover;
   background-position: center;
-  transition: 
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  overflow: hidden;
-  will-change: transform;
-  animation: fadeInUp 0.8s ease-out forwards;
-  opacity: 0;
-  animation-delay: calc(var(--banner-index, 0) * 0.2s);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .banner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
-  border-radius: 30px;
-  transition: background 0.3s ease;
+  background: rgba(0,0,0,0.25);
+  border-radius: 18px;
 }
 
 .banner-text {
   position: relative;
   z-index: 2;
-  animation: slideInUp 0.6s ease-out forwards;
-  animation-delay: calc(var(--banner-index, 0) * 0.2s + 0.3s);
-  opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.banner-text h2 {
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
 }
 
 .banner:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 
-    0 30px 60px rgba(0,0,0,0.5),
-    0 0 40px rgba(216, 106, 45, 0.5),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  filter: brightness(1.1) saturate(1.1);
-}
-
-.banner:hover::before {
-  background: 
-    linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(216, 106, 45, 0.1) 100%),
-    rgba(0,0,0,0.15);
-  backdrop-filter: blur(1px);
-}
-
-.banner:hover .banner-text {
-  transform: translateY(-5px);
-  transition: transform 0.3s ease;
-}
-
-.banner:hover .banner-text h2 {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
 /* Efeito de destaque: outros banners ficam mais opacos quando um é hoverado */
