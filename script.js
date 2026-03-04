@@ -716,7 +716,7 @@ function handleAddSheet(e) {
   // Se o usuário forneceu uma imagem, processa; senão usa a logo padrão
   const file = imageInput.files[0];
 
-  const finalizeWithImage = (imageSrc) => {
+  const finalizeWithImage = async (imageSrc) => {
     const sheet = {
       id: 'custom-' + Date.now(),
       name: name,
@@ -726,8 +726,8 @@ function handleAddSheet(e) {
       timestamp: new Date().toISOString()
     };
 
-    saveCustomSheet(sheet);
-    addSheetToDOM(sheet);
+    const savedSheet = await saveCustomSheet(sheet);
+    addSheetToDOM(savedSheet || sheet);
     showFormMessage('✅ Planilha adicionada com sucesso!', 'success');
 
     setTimeout(() => {
@@ -801,62 +801,60 @@ function resizeImage(img, maxWidth, maxHeight) {
 }
 
 async function saveCustomSheet(sheet) {
-
   try {
-
     const response = await fetch('/api/sheets', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sheet)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: sheet.name,
+        link: sheet.link,
+        category: sheet.category,
+        image: sheet.image
+      })
     });
 
-    if (!response.ok) {
-      throw new Error('Erro ao salvar no banco');
-    }
+    if (!response.ok) throw new Error('Erro ao salvar no banco');
 
-    console.log('✅ Planilha salva no Neon');
+    const saved = await response.json();
 
+    // Mantém uma cópia local só para o portal listar/editar sem quebrar nada
+    // (a fonte de verdade é o banco)
+    const current = JSON.parse(localStorage.getItem(STORAGE_KEY_SHEETS) || '[]');
+    current.unshift(saved);
+    localStorage.setItem(STORAGE_KEY_SHEETS, JSON.stringify(current));
+
+    return saved;
   } catch (error) {
-
     console.error('Erro ao salvar planilha:', error);
-    alert('Erro ao salvar planilha no banco');
-
+    showFormMessage('Erro ao salvar no banco. Veja o console.', 'error');
+    return null;
   }
-
 }
+
 async function loadCustomSheets() {
-
   try {
-
     const response = await fetch('/api/sheets');
-
-    if (!response.ok) {
-      throw new Error('Erro ao buscar planilhas');
-    }
+    if (!response.ok) throw new Error('Erro ao buscar planilhas');
 
     const sheets = await response.json();
 
+    // Salva uma cópia local para manter os recursos de editar/deletar funcionando
+    localStorage.setItem(STORAGE_KEY_SHEETS, JSON.stringify(sheets));
+
     const originalCategories = JSON.parse(localStorage.getItem(STORAGE_KEY_ORIGINAL_CATEGORIES) || '{}');
 
+    // Aplicar categorias alteradas às planilhas originais
     const allBanners = document.querySelectorAll('.banner');
-
     allBanners.forEach(banner => {
-
       const sheetId = banner.getAttribute('data-sheet-id');
-
       if (sheetId && originalCategories[sheetId]) {
-
         const newCategoryId = originalCategories[sheetId];
         const newSection = document.getElementById(newCategoryId);
 
         if (newSection && banner.parentElement.id !== newCategoryId) {
           newSection.appendChild(banner);
         }
-
       }
-
     });
 
     sheets.forEach(sheet => {
@@ -864,37 +862,10 @@ async function loadCustomSheets() {
     });
 
     if (sheets.length > 0) {
-      console.log(`✅ ${sheets.length} planilha(s) carregadas do banco`);
+      console.log(`✅ ${sheets.length} planilha(s) carregada(s) do banco`);
     }
-
   } catch (error) {
-
     console.error('Erro ao carregar planilhas:', error);
-
-  }
-
-}
-  
-  // Aplicar categorias alteradas às planilhas originais
-  const allBanners = document.querySelectorAll('.banner');
-  allBanners.forEach(banner => {
-    const sheetId = banner.getAttribute('data-sheet-id');
-    if (sheetId && originalCategories[sheetId]) {
-      const newCategoryId = originalCategories[sheetId];
-      const newSection = document.getElementById(newCategoryId);
-      
-      if (newSection && banner.parentElement.id !== newCategoryId) {
-        newSection.appendChild(banner);
-      }
-    }
-  });
-  
-  sheets.forEach(sheet => {
-    addSheetToDOM(sheet);
-  });
-
-  if (sheets.length > 0) {
-    console.log(`✅ ${sheets.length} planilha(s) customizada(s) carregada(s)`);
   }
 }
 
@@ -1882,5 +1853,3 @@ function openDeleteCategoryModal() {
     }
   });
 }
-
-
