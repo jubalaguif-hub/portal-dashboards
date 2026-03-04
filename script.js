@@ -854,10 +854,13 @@ async function loadCustomSheets() {
     const response = await fetch("/api/sheets");
     const sheets = await response.json();
 
-    if (!sheets || sheets.length === 0) {
-      console.log("Nenhuma planilha no banco");
+    if (!Array.isArray(sheets)) {
+      console.error("Resposta inválida da API");
       return;
     }
+
+    // Limpar banners existentes criados dinamicamente
+    document.querySelectorAll(".banner.custom-banner").forEach(b => b.remove());
 
     sheets.forEach(sheet => {
 
@@ -871,8 +874,9 @@ async function loadCustomSheets() {
       const banner = document.createElement("a");
       banner.href = sheet.link;
       banner.target = "_blank";
-      banner.className = "banner";
+      banner.className = "banner custom-banner";
       banner.style.backgroundImage = `url('${sheet.image}')`;
+      banner.setAttribute("data-sheet-id", sheet.id);
 
       banner.innerHTML = `
         <div class="banner-text">
@@ -884,7 +888,7 @@ async function loadCustomSheets() {
 
     });
 
-    console.log("Sheets carregadas do banco:", sheets.length);
+    console.log("✅ Sheets carregadas do banco:", sheets.length);
 
   } catch (error) {
 
@@ -1876,6 +1880,7 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
 
 
 
