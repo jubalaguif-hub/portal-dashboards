@@ -864,8 +864,8 @@ async function loadCustomSheets() {
 
     sheets.forEach(sheet => {
 
-      const section = document.getElementById(sheet.category);
-
+      const section = document.getElementById(sheet.category.toLowerCase());
+      
       if (!section) {
         console.warn("Categoria não encontrada:", sheet.category);
         return;
@@ -1880,6 +1880,7 @@ function openDeleteCategoryModal() {
     }
   });
 }
+
 
 
 
