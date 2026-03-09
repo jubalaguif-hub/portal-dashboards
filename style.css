@@ -1153,7 +1153,7 @@ body::-webkit-scrollbar-thumb:hover {
 /* BANNERS */
 .banner {
   position: relative;
-  height: 375px;
+  height: 120px;
   margin: 30px auto;
   max-width: 1248px;
   padding: 24px;
