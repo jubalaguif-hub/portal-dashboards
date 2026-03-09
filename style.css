@@ -2023,3 +2023,35 @@ input:focus-visible {
     0 0 25px rgba(216,106,45,0.35);
   filter: brightness(1.05) saturate(1.05);
 }
+/* GRID DE CARDS */
+.section.active {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.banner {
+  height: 140px;
+  max-width: none;
+  margin: 0;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  padding: 16px;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* TEXTO */
+.banner-text h2{
+  font-size: 16px;
+}
+
+/* HOVER */
+.banner:hover{
+  transform: translateY(-4px);
+}
