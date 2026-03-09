@@ -1153,26 +1153,33 @@ body::-webkit-scrollbar-thumb:hover {
 /* BANNERS */
 .banner {
   position: relative;
-  height: 120px;
-  margin: 30px auto;
-  max-width: 1248px;
-  padding: 24px;
+  height: 140px;
+  margin: 0;
+  max-width: none;
+  padding: 18px;
+
   display: flex;
   align-items: flex-end;
-  border-radius: 30px;
+
+  border-radius: 18px;
   text-decoration: none;
+
   background-size: cover;
   background-position: center;
-  transition: 
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+
   cursor: pointer;
   overflow: hidden;
-  will-change: transform;
-  animation: fadeInUp 0.8s ease-out forwards;
+
+  animation: fadeInUp .6s ease-out forwards;
   opacity: 0;
-  animation-delay: calc(var(--banner-index, 0) * 0.2s);
+  animation-delay: calc(var(--banner-index,0)*.15s);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 
 .banner::before {
