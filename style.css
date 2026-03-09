@@ -1265,6 +1265,7 @@ body::-webkit-scrollbar-thumb:hover {
 /* IMAGENS DOS BANNERS */
 .banner.assistencial { background-image: url("./img/banners/assistencial.webp"); }
 .banner.exames { background-image: url("./img/banners/tomo.webp"); }
+.banner.POLI { background-image: url("./img/banners/POLI.webp"); }
 .banner.ambulancia { background-image: url("./img/banners/ambulancia.webp"); }
 .banner.rh { background-image: url("./img/banners/rh.webp"); }
 .banner.planilha-horas-pj { background-image: url("./img/banners/planilhas-horas.webp"); }
